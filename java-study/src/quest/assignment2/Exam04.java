@@ -8,7 +8,17 @@
 3의 절대값 : 3 
  */
 package quest.assignment2;
-
+import java.util.Scanner;
 public class Exam04 {
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.print("숫자를 입력하세요 : ");
+		int num = Integer.parseInt(sc.nextLine());
+		int abNum = num<=0? num*-1:num;
+		
+		System.out.print(num+"의 절대값 : " + abNum );		
+
+	}
 
 }

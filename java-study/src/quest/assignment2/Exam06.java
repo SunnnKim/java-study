@@ -11,9 +11,9 @@ import java.util.Random;
 public class Exam06 {
 	public static void main(String[] args) {
 		Random r = new Random();
-		int number = r.nextInt(10);
-		//number는 0 ~ 9
+		int num= r.nextInt(100);
+		String str = (num % 2)== 0? " (짝수)": " (홀수)"; 
+		System.out.print("발생한 난수 : " + num+str);
 		
-		System.out.println("발생한 난수 : " + number);
 	}
 }

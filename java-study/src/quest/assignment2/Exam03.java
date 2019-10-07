@@ -13,8 +13,24 @@
 상품 총 가격은 900000 원 입니다. 
 
 */
+
 package quest.assignment2;
+import java.util.Scanner;
 
 public class Exam03 {
+	public static void main(String[] args) {
+	
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("상품 수량을 입력하시오 : ");
+		int num = Integer.parseInt(sc.nextLine());
+		System.out.print("상품 가격을 입력하시오 : ");
+		int price = Integer.parseInt(sc.nextLine());
+		double total = num>=10? price>=5000? num*price*0.9:num*price:num*price;
+		System.out.print("상품 총 가격은 " +(int)total+"원 입니다.");
+		
+	}}
+	
+	
+	
 
-}

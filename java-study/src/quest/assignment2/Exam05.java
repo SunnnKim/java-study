@@ -10,7 +10,16 @@
 
  */
 package quest.assignment2;
+import java.util.Random;
 
 public class Exam05 {
-
+	public static void main(String[] args){
+		Random r = new Random();
+		int randomNum=r.nextInt(101);
+		String str = randomNum>=60? "점은 합격입니다." : "점은 불합격입니다.";
+		System.out.print(randomNum+str);
+		
+		
+		
+	}
 }
