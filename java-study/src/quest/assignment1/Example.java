@@ -17,6 +17,5 @@ public class Example {
 		System.out.print("입력하신 숫자는 " + num + "입니다.");
 		
 		
-		
 	}
 }
