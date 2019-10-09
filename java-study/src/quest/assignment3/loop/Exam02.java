@@ -8,7 +8,27 @@
 
  */
 package quest.assignment3.loop;
+import java.util.Random;
 
 public class Exam02 {
 
+	public static void main(String[] args) {
+		
+		Random r = new Random();
+		int[] randomNum = new int[5];
+		int sum = 0;
+		double average = 0;
+		
+		System.out.print("생성된 수 : ");
+		for(int i=0;i<5;i++)	{
+			randomNum[i] = r.nextInt(100)+1;
+			System.out.print(randomNum[i]+ " ");
+			sum += randomNum[i];
+		}average = sum / 5.00F;
+		System.out.println("\n합계 : " + sum);
+		System.out.println("평균 : " + String.format("%.2f", average));
+			
+		
+	}
+	
 }
