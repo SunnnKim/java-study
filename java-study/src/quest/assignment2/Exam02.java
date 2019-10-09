@@ -13,9 +13,9 @@ import java.util.Scanner;
 public class Exam02 {
 	
 	public static void main(String[] args) {
-		
+
 		Scanner sc = new Scanner(System.in);		//	입력값
-		int num[] = new int[3];
+		int[] num = new int[3];
 		
 		for(int i=1;i<4;i++) {
 		System.out.print(i+"번째 숫자를 입력하세요 : ");
@@ -30,10 +30,5 @@ public class Exam02 {
 		
 		System.out.print("최대값 : " + max +", 최소값 : "+ min);
 		
-		
-		
-	}
-	
 
-
-}
+}}
