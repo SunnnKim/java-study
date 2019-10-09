@@ -10,6 +10,14 @@
 
 package quest.assignment3.loop;
 
+
+
 public class Exam01 {
-	
+	public static void main(String[] args) {
+		
+		
+		
+		
+		
+	}
 }
