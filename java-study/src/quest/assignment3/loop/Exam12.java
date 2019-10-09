@@ -23,7 +23,29 @@
 
  */
 package quest.assignment3.loop;
+import java.util.Scanner;
+import java.util.Random;
 
 public class Exam12 {
+	public static void main(String[] args) {
 
+		Random r = new Random();
+		Scanner sc = new Scanner(System.in);
+		int randomNum = r.nextInt(1001)+1;
+		int input;
+		
+	System.out.println("1부터 1000사이의 숫자를 맞추는 게임입니다.(총 10회)");
+	for(int i=1;i<=10;i++) {
+			System.out.print(i+"회. 숫자를 입력하세요(1 - 1000) : ");
+			input = Integer.parseInt(sc.nextLine());
+			if(input > randomNum) System.out.println(input+"보다 작은 값 입니다.");
+			else if (input < randomNum) System.out.println(input+"보다 큰 값 입니다.");
+			else {
+				System.out.println("정답입니다.");
+				break;
+			}
+		if(i==10) System.out.println("10회안에 맞추기 실패하였습니다.");	
+		
+		}
+	}
 }

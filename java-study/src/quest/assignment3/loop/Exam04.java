@@ -11,7 +11,22 @@
  */
 
 package quest.assignment3.loop;
+import java.util.Scanner;
 
 public class Exam04 {
+	public static void main(String[] args) {
+		
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.print("수를 입력하세요 : ");
+		int input = Integer.parseInt(sc.nextLine());
+		int sum=0;
+		for(int i=1; i<input;i++) {
+			if(input%i == 0) sum+= i;
+		}if(sum == input) System.out.println(input+ "은 완전수 입니다.");
+		else 	System.out.println(input+ "은 완전수가 아닙니다.");
+		
+		
+	}
 
 }
