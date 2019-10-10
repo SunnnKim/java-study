@@ -8,7 +8,27 @@ public class Exam01 {
 		 *   최댓값 : 9
 		 *   최솟값 : 3
 		 */
-	}
+		int max=0, min=0;
+		int temp=arr[0];
+		for(int i=0;i<6;i++){
+			
+			if(temp<arr[i]) temp = arr[i];
+
+			max=temp;
+		
+			}
+		for(int i=0;i<6;i++){
+			
+			if(temp>arr[i]) temp = arr[i];
+
+			min=temp;
+		
+			}
+		
+		System.out.println("최대값 : "+max);
+		System.out.println("최소값 : "+min);
+		
+		}
 }
 
 

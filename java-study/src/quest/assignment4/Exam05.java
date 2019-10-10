@@ -25,13 +25,59 @@ import java.util.Random;
 
 public class Exam05 {
 	public static void main(String[] args) {
+		
 		Random r = new Random();
-
+		
+		int[] arr = new int[5];
+		int sum = 0;
+		int temp1, temp2;
+		int max, min;
+		double aver;
+		
+	for(int i=0;i<arr.length;i++) {
+		arr[i] = r.nextInt(20)+1;
+		sum = sum + arr[i];
+	}
+	
+	//최소, 	최대값 찾기
+	temp1 = arr[0];
+	temp2 = arr[0];
+	
+	for(int i=0;i<arr.length;i++) {
+		
+		if(arr[i]>temp1) temp1 = arr[i];
+		if(arr[i]<temp2) temp2 = arr[i];
+	}
+		max = temp1;
+		min = temp2;
+		aver = sum / 5.d;
+		
+		
+		
+		
+		System.out.println(Arrays.toString(arr));
+		System.out.println("합계 : " + sum );
+		System.out.println("평균 : "+ String.format("%.2f", aver));
+		System.out.println("최대값 : " + max);
+		System.out.println("최소값 : " + min);
+		
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 //		System.out.println(Arrays.toString(arr));
 //		System.out.println("합계 : " + sum);
 //		System.out.printf("평균 : %.2f\n", (double)sum / arr.length);
 //		System.out.println("최댓값 : " + max);
 //		System.out.println("최솟값 : " + min);		
+		
 	}
 }
 

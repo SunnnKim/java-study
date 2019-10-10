@@ -6,9 +6,12 @@ public class Exam08 {
 		String[] subject = {"파이썬", "자바", "SQL"};
 		int[] score = {95, 88, 44};
 		
+		
 		System.out.println("고슬링 학생의 성적");
 		System.out.println("1학기 성적");
-		
+		for(int i=0;i<3;i++) {
+			System.out.print(subject[i]+"("+score[i]+") ");
+		}
 		/*
 		
 		출력형식>

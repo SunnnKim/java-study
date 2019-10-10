@@ -4,7 +4,9 @@ public class Exam10 {
 	public static void main(String[] args) {
 		
 		String[] subject = {"파이썬", "자바", "SQL"};
-		//int[][][] score = ? ;
+		//int[][][] score = {
+
+		};
 	
 	/*
 	출력 형식>
@@ -28,10 +30,11 @@ public class Exam10 {
 	 
 	 
 	 */
+		
 	
 	
 	}
-}
+
 
 
 
