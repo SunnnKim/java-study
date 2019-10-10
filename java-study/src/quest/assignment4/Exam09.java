@@ -13,17 +13,17 @@ public class Exam09 {
 				{95, 88, 44}, 
 				{91, 77, 66}
 		};
-		System.out.println("고슬링 학생의 성적");
 		
-		for (int k = 0; k < score.length; k++) {
-			System.out.println(k + 1 + "학기 성적");
-			// 파이썬(95) 자바(88) SQL(44)
-			for (int i = 0; i < score[k].length; i++) {
-				System.out.printf("%s(%d) ", subject[i], score[k][i]);
+		System.out.println("고슬링 학생의 성적");
+		System.out.println("***************");
+		for(int i=0;i<score.length;i++) {
+			System.out.println(1+i+ "학기 성적");
+			for(int j=0; j<score[i].length;j++) {
+				System.out.print(subject[j]+"("+score[i][j]+") ");
 			}
-			System.out.println();
-			System.out.println("-------------------");
+			System.out.println("\n------------------------");
 		}
+		
 		
 	}
 }

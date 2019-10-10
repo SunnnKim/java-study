@@ -16,8 +16,16 @@ public class Exam06 {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("첫번째 수를 입력하세요(2 - 9 ) : ");
 		int input1 = Integer.parseInt(sc.nextLine());
+		if(input1>9||input1<2) {
+			System.out.print("2 - 9 사이의 숫자만 입력하세요 : ");
+			input1 = Integer.parseInt(sc.nextLine());
+		}
 		System.out.print("두번째 수를 입력하세요(2 - 9 ) : ");
 		int input2 = Integer.parseInt(sc.nextLine());
+		if(input2>9||input2<2) {
+			System.out.print("2 - 9 사이의 숫자만 입력하세요 : ");
+			input2 = Integer.parseInt(sc.nextLine());
+		}
 		
 		if(input1<=input2) {
 			for(int i=input1;i<=input2;i++) {
