@@ -23,14 +23,14 @@ public class Exam06 {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("첫 번째 인덱스 선택 : ");
 		int input1 = Integer.parseInt(sc.nextLine());
-		while( input1> arr.length || input1 < 0) {
+		while( input1> arr.length-1 || input1 < 0) {
 			System.out.print("다시 입력하세요 : ");
 			input1 = Integer.parseInt(sc.nextLine());
 		}
 		
 		System.out.print("두 번째 인덱스 선택 : ");
 		int input2 = Integer.parseInt(sc.nextLine());
-		while( input2> arr.length || input2 < 0 ) {
+		while( input2> arr.length-1 || input2 < 0 ) {
 			System.out.print("다시 입력하세요 : ");
 			input2 = Integer.parseInt(sc.nextLine());
 		}

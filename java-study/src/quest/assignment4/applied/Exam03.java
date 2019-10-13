@@ -25,5 +25,20 @@ public class Exam03 {
 		int[] frequency = new int[5]; 
 
 		// 아래에 코드를 추가해 주세요..
+		
+		int count=0;
+		System.out.println("Number	Frequency");
+
+		for(int i=1;i<=frequency.length;i++) {
+			for(int j=0;j<data.length;j++) 
+				if(data[j]== i) count++;
+			frequency[i-1] = count;
+			count=0;
+		}
+		
+		for(int i=1;i<=frequency.length;i++) System.out.println("  "+i+"       "+frequency[i-1]);
+		
+		
+		
 	}
 }
