@@ -11,9 +11,25 @@ Hell wrld
 
  */
 public class Exam03 { 
+
 	private static String remove(String data, char ch) {
-		return "";
+		
+		String ipData = data;
+		char a = ch;
+		int length = ipData.length();
+	
+		String str="";
+		for(int i=0; i<length; i++) {
+			if(ipData.charAt(i) != a ) str += Character.toString(ipData.charAt(i));
+			// 문자열의 i번째 문자가 인자값이랑 같지 않을 때 문자열에 넣어주기
+		}
+		
+		
+		return str;
+		
 	} 
+	
+	
 	public static void main(String[] args) { 
 		String result = remove("hello world", 'o'); 
 		System.out.println(result); 

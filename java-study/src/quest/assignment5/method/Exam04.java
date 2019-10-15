@@ -21,7 +21,29 @@ public class Exam04 {
 		//- 첫번째 매개변수 문자열에는 ‘#’이 중간에 포함되어 있다. 
 		//- ‘#’은 문자열 시작과 끝에 나올 수 없다. 
 		// 구현하시오. 
-		return new String[0]; 
+		String firstStr = str1;
+		String secStr = str2;
+
+		int count=0;
+		
+		for(int i=0;i < firstStr.length();i++) {
+			if(firstStr.charAt(i) == secStr.charAt(0)) count++;
+		}
+		String [] strArr = new String[count+1];
+		int temp=0;
+		count=0;
+		for(int i=0;i<firstStr.length(); i++) {
+			if(str1.charAt(i) == str2.charAt(0)) {
+				strArr[count] = str1.substring(temp,i);
+				temp = i+1;
+				count++;
+			}
+		}
+		strArr[count] = str1.substring(temp);
+
+		
+		
+		return strArr; 
 	} 
 	public static void main(String[] args) { 
 		String str = "PROD-001#X-note#Samsung#3#6000000"; 

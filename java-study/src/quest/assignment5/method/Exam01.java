@@ -12,13 +12,28 @@ public class Exam01 {
 	public int getValue(int[] values, boolean isMax) {
 		//- isMax 값이 true 이면 int 타입의 배열값(values)에서 최대값을 리턴한다. 
 		//- isMax 값이 false 이면 int 타입의 배열값(values)에서 최소값을 리턴한다.
-		// 코드 완성 
-		return 0; 
+		// 코드 완성
+		int length = values.length;
+		int temp = values[0];
+		if(isMax == true) {
+			for(int i = 0;i<length;i++) {
+				if(temp < values[i]) temp = values[i];}
+			return temp; 
+		}else {
+			for(int i = 0;i<length;i++) {
+				if(temp > values[i]) temp = values[i];}
+			return temp;
+		}
 	}
+	
+	
+	
 	public static void main(String[] args) { 
 		Exam01 ex01 = new Exam01(); 
-		// getValue 메소드를 호출하고 결과 학인 
-		int [] arr = {9, 2, 87, 12, 30}; int max = ex01.getValue(arr, true); 
+		// getValue 메소드를 호출하고 결과 확인 
+		int [] arr = {9, 2, 87, 12, 30}; 
+		
+		int max = ex01.getValue(arr, true); 
 		System.out.println("최대값 : " + max); 
 		int min = ex01.getValue(arr, false); 
 		System.out.println("최소값 : " + min); 

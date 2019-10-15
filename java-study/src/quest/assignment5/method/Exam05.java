@@ -16,6 +16,7 @@ class Exam05 {
 	} 
 	private static String getNextId(String id) { 
 		//기능구현 
+		
 		return "";
 	} 
 }
