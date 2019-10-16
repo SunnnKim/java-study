@@ -11,12 +11,43 @@ PRODUCT-00004
 class Exam05 { 
 	public static void main(String[] args) { 
 		System.out.println(getNextId("USER-00007")); 
-		System.out.println(getNextId("ORDER-00009")); 
+		System.out.println(getNextId("ORDER-0009")); 
 		System.out.println(getNextId("PRODUCT-00003")); 
+
+		
 	} 
 	private static String getNextId(String id) { 
 		//기능구현 
+		int length = id.length();
+		char [] chs = new char[length];
+		chs = id.toCharArray();
+		int lastNum = chs[length-1] - '0';
 		
-		return "";
+		if( lastNum == 9 ) {
+			chs[length-1] = '0';
+			lastNum = chs[length-2] - '0';
+			lastNum++;
+			chs[length-2] = Character.forDigit(lastNum,10);
+		}else {
+			lastNum++;
+			chs[length-1] = Character.forDigit(lastNum,10);
+		}
+		String result="";
+		for(int i=0;i<length;i++) 
+				result+= chs[i];
+			
+		
+		return result;
 	} 
 }
+/*
+ * String getId = Character.toString(id.charAt(id.length()-1));
+		String newStr="";
+		
+		int addId = Integer.parseInt(getId) +1;
+		String newId = Integer.toString(addId);
+		newStr = id.replace(getId, newId);
+		int a = 123;
+		String.valueOf(a);
+		*/
+ 

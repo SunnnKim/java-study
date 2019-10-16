@@ -11,7 +11,22 @@ public class Exam07 {
 		System.out.println(translate("Java Program"));
 	} 
 	private static String translate(String str) { 
-		// 구현하시오. 
-		return "";
+		// 구현하시오.
+		int length = str.length();
+		char[] chs = new char[length];
+		chs = str.toCharArray();
+				
+		
+ 		for(int i=0;i<length;i++) {
+		if(Character.isUpperCase(chs[i])) {
+			chs[i] = Character.toLowerCase(chs[i]);	
+		}else{
+			chs[i] = Character.toUpperCase(chs[i]);	
+		}
+		}
+ 		
+ 		String newStr =  new String(chs);	
+		
+		return newStr;
 	} 
 } 
