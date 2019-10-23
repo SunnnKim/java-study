@@ -26,7 +26,7 @@ package quest.assignment6.classes;
 
 public class Exam01 {
 	public static void main(String[] args) {
-		/*
+		
 		Bus no360 = new Bus(360);
 		no360.ride(3);
 		no360.leave();
@@ -45,6 +45,7 @@ public class Exam01 {
 		no740.ride(2);
 		no740.leave(3);
 		System.out.println(no740.toString());		
-		*/
+		
 	}
 }
+
