@@ -3,8 +3,6 @@ import java.util.*;
 
 public class GameTest {
 
-	private static Exception Exception;;
-
 	public static void main(String[] args) {
 		
 		int inputNum;
@@ -35,7 +33,7 @@ public class GameTest {
 				try {
 				inputNum = Integer.parseInt(sc.nextLine());
 				if( inputNum == 1 || inputNum == 2 || inputNum == 3 ) break;
-				else throw Exception;
+				else throw new Exception();
 				}catch(Exception e ) {
 					System.out.println("다시 입력하세요.");}
 			}
@@ -54,7 +52,7 @@ public class GameTest {
 				try {
 				inputNum = Integer.parseInt(sc.nextLine());
 				if( inputNum == 1 || inputNum == 2 || inputNum == 3 || inputNum == 4 || inputNum == 5 || inputNum == 6) break;
-				else throw Exception;
+				else throw new Exception();
 				}catch(Exception e ) {
 					System.out.println("다시 입력하세요.");}
 			}
