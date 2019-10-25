@@ -53,7 +53,7 @@ public class Exam02 {
 			System.out.println("길이 : " + length1);
 			
 			if(option == 1) {
-				Square s1 = new Square(length1, length2);
+				Square s1 = new Square(length1);
 				s1.area();
 			}else {
 				Circle c1 = new Circle(length1);
@@ -86,6 +86,7 @@ public class Exam02 {
 
 }
 abstract class Shape{
+	static double PI = 3.14;
 	int length1=0;
 	int length2=0;
 	int area;
@@ -111,7 +112,12 @@ class Ractangle extends Shape{
 	public Ractangle(int a, int b) {
 		super(a, b);
 	}
-	
+	public Ractangle(int a) {
+		super(a);
+
+		
+		}
+
 	
 	public void area() {
 		area = length1 * length2;
@@ -130,8 +136,8 @@ class Triangle extends Shape{
 	}
 
 	public void area() {
-		area = length1 * length2;
-		System.out.println("삼각형의 면적은 " +  area +" 입니다.");
+		double sum = (double)(length1 * length2) / 2;
+		System.out.println("삼각형의 면적은 " +  sum +" 입니다.");
 		
 		
 	}
@@ -146,16 +152,17 @@ class Circle extends Shape{
 
 	public void area() {
 		
-		area = length1 * length1;
-		System.out.println("원의 면적은 " +  area +" π 입니다.");
+		double sum = (double)(length1 * length1) * PI;
+		System.out.println("원의 면적은 " +  sum +" 입니다.");
 		
 	}
 
 }
 
 class Square extends Ractangle {
-	public Square(int a, int b) {
-		super(a, b);
+
+	public Square(int a) {
+		super(a);
 	}
 
 	public void area() {
