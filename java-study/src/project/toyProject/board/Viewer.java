@@ -13,7 +13,7 @@ public class Viewer {
 
 		}
 
-		sc.close();
+		//sc.close();
 
 	}
 
