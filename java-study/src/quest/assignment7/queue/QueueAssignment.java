@@ -11,8 +11,19 @@ public class QueueAssignment {
 		numbers.addFirst(30);
 		numbers.addFirst(20);
 		numbers.addFirst(10);
-		System.out.println(numbers.node(0));
-		
+		numbers.addLast(25);
+		numbers.add(2, 178);
+		numbers.add(2, 150);
+		System.out.println(numbers);
+		System.out.println("삭제된 값 : " +numbers.removeFirst());
+		System.out.println(numbers);
+		System.out.println("삭제된 값 : " +numbers.remove(1));
+		System.out.println(numbers);
+		System.out.println("삭제된 값 : " +numbers.removeLast());
+		System.out.println(numbers);
+		System.out.println("사이즈 : " + numbers.size());
+		System.out.println(numbers);
+		System.out.println("2번째 데이터 꺼내기 : " + numbers.get(2));
 		
 		
 //		Scanner sc = new Scanner(System.in);
