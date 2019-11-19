@@ -179,8 +179,71 @@ public class LinkedList {
 		return 	temp.data ;
 	}
 	
+	public int indexOf(Object data) {
+		Node temp = head;
+		int index = 0; 
+		//우리가 찾고자하는 위치의 정보
+		while(temp.data != data) {
+			//현재 temp에 저장된 데이터와 우리가 찾는 data값이 다르면
+			//while문 실
+			temp = temp.next;
+			index++;
+			if(temp == null) { // temp가 tail 인 경우
+				return -1;
+			}
+		}
+		
+		return index;
+	}
+	
+	public ListIterator listIterator() {
+		
+		return new ListIterator();
+	}
 	
 	
-	
+	// Iterator
+	// 리스트 구조의 컬렉션에서 데이터 순차검색하는 반복자
+	// 리스트의 내부 데이터를 가리키는 클래스인 ListIterator
+	// 비유하자면 
+	// 책을 보관하는 책장 = Collection
+	// 책 = 컬렉션 안에 들어갈 객체
+	// 책을 정리하는 도서관 사서 = Iterator
+	// 단, 사서(이터레이터)는 단순하여 한번에 한 권밖에 가져오지 못한다.
+	public class ListIterator{
+		private Node next;
+		private Node lastReturned;
+		private int nextIndex;
+		
+		//생성자는 next 변수가 head를 향하도록 한다.
+		public ListIterator() {
+			next = head;
+		}
+		
+		//현재 가리키는 노드를 리턴하고 다음 노드를 next에 넣어둠
+		public Object next() {
+			lastReturned = next;
+			this.next = next.next;
+			nextIndex++;	//hasNext 같은 메소드를 실행하기 위해 정의 및 증가 
+			
+			return lastReturned.data;
+		}
+		
+		public boolean hasNext() {
+			return nextIndex < size;
+		}
+		
+		// 위의 링크드리스트는 단방향으로 연결되어있는 단순 연결리스트
+		// 이전 노드를 확인하거나 역순으로 데이터를 조회하는 것은 불가능함.
+		// previous 를 하기 위해서는 이전 노드를 알 수있는 정보가 필요함
+		// doubly linked list는 양방향으로 연결된 링크드리스트 
+		// 앞으로 갈 수 있고 뒤로 갈 수 있으나,
+		// next 변수는 데이터 메모리를 추가적으로 사용하기 떄문에
+		// 공간 효율성, 즉 메모리 효율성이 떨어짐(메모리를 더 사용함)
+		
+		
+		
+		
+	}
 
 }

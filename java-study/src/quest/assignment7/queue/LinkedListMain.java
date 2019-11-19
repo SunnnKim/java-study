@@ -1,14 +1,12 @@
 package quest.assignment7.queue;
 
 
-public class QueueAssignment {
+public class LinkedListMain {
 
 	public static void main(String[] args) {
 		
-		
 		LinkedList numbers = new LinkedList();
 		
-		numbers.addFirst(30);
 		numbers.addFirst(20);
 		numbers.addFirst(10);
 		numbers.addLast(25);
@@ -24,6 +22,13 @@ public class QueueAssignment {
 		System.out.println("사이즈 : " + numbers.size());
 		System.out.println(numbers);
 		System.out.println("2번째 데이터 꺼내기 : " + numbers.get(2));
+
+		numbers.addLast(30);
+		numbers.addLast(20);
+		numbers.addLast(10);
+		
+		System.out.println(numbers);
+		System.out.println("30의 인덱스 : " + numbers.indexOf(30));
 		
 		
 //		Scanner sc = new Scanner(System.in);
