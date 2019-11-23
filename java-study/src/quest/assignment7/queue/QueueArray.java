@@ -68,6 +68,7 @@ public class QueueArray {
 		}
 		if(dataSize == 0) {	// 모두 꺼냈을 때
 			index =-1;
+			headIndex = -1;
 		}
 		return returnData;
 	}
