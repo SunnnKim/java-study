@@ -15,7 +15,7 @@ public class Queue {
 			this.data = input;
  
 		}
-	}
+	} 
 
 	// 큐에 데이터를 집어넣는 큐 클래스의 메소드들
 	
