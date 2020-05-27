@@ -28,7 +28,26 @@ public class Queue {
 		QueueTest<Integer> queue = new QueueTest();
 		queue.push(1);
 		queue.push(2);
+		System.out.println("size:" + queue.size());
 		queue.push(100);
+		queue.push(300);
+		queue.push(400);
+		queue.push(30);
+		queue.push(33);
+		System.out.println("size:" + queue.size());
+		System.out.println("front:" + queue.front());
+		System.out.println("back:" + queue.back());
+		System.out.println("pop :" + queue.pop());
+		System.out.println("pop :" + queue.pop());
+		System.out.println("pop :" + queue.pop());
+		System.out.println("pop :" + queue.pop());
+		System.out.println("pop :" + queue.pop());
+		System.out.println("size:" + queue.size());
+		queue.push(200);
+		
+		System.out.println("size:" + queue.size());
+		System.out.println("pop :" + queue.pop());
+		System.out.println("pop :" + queue.pop());
 		
 		
 	}
@@ -57,14 +76,12 @@ class QueueTest<T>{
 			Node node = new Node(obj);
 			firstNode = node;
 			lastNode = node;
-			System.out.println("firstNode : " + firstNode.data);
 		}
 		// 노드가 있는 경우
 		else {
 			Node node = new Node(obj);
-			firstNode.next = node;
+			lastNode.next = node;
 			lastNode = node;
-			System.out.println("firstNode : " + firstNode.data + ", lastNode : " + lastNode.data);
 		}
 	}
 	public Object pop() {
@@ -72,24 +89,34 @@ class QueueTest<T>{
 		if(firstNode == null) return -1;
 		// 큐에 수가 있는 경우
 		else {
-			
-			return null;
+			Node temp = firstNode;
+			firstNode = firstNode.next;
+			return temp.data;
 		}
 	}
 	
 	
-	
 	public int size() {
+		int count = 0;
+		Node temp = firstNode;
+		while( temp != null ) {
+			temp = temp.next;
+			count++;
+		}
+		return count;
+	}
+	
+	public int empty() {
+		if(size() == 0 ) return 1;
 		return 0;
 	}
-	public boolean empty() {
-		return false;
+	public Object front() {
+		if(firstNode == null) return -1;
+		return firstNode.data;
 	}
-	public T front() {
-		return null;
-	}
-	public T back() {
-		return null;
+	public Object back() {
+		if(lastNode == null) return -1;
+		return lastNode.data;
 	}
 	
 }
