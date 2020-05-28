@@ -1,5 +1,7 @@
 package dataStructure;
 
+import java.util.Scanner;
+
 /*
  
  정수를 저장하는 큐를 구현한 다음, 입력으로 주어지는 명령을 처리하는 프로그램을 작성하시오.
@@ -25,52 +27,60 @@ public class Queue {
 
 	public static void main(String[] args) {
 		
-		QueueTest<Integer> queue = new QueueTest();
-		queue.push(1);
-		queue.push(2);
-		System.out.println("size:" + queue.size());
-		queue.push(100);
-		queue.push(300);
-		queue.push(400);
-		queue.push(30);
-		queue.push(33);
-		System.out.println("size:" + queue.size());
-		System.out.println("front:" + queue.front());
-		System.out.println("back:" + queue.back());
-		System.out.println("pop :" + queue.pop());
-		System.out.println("pop :" + queue.pop());
-		System.out.println("pop :" + queue.pop());
-		System.out.println("pop :" + queue.pop());
-		System.out.println("pop :" + queue.pop());
-		System.out.println("size:" + queue.size());
-		queue.push(200);
-		
-		System.out.println("size:" + queue.size());
-		System.out.println("pop :" + queue.pop());
-		System.out.println("pop :" + queue.pop());
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		sc.nextLine();
+		String[] order = new String[n];
+		for(int i = 0; i < n; i++ ) {
+			order[i] = sc.nextLine();
+		}
+		// Queue Instance
+		QueueTest queue = new QueueTest();
+		for(String str : order) {
+			switch(str.split(" ")[0]) {
+				case "push":
+					queue.push(Integer.parseInt(str.split(" ")[1]));
+					break;
+				case "pop":
+					System.out.println(queue.pop());
+					break;
+				case "size":
+					System.out.println(queue.size());
+					break;
+				case "empty":
+					System.out.println(queue.empty());
+					break;
+				case "front":
+					System.out.println(queue.front());
+					break;
+				case "back":
+					System.out.println(queue.back());
+					break;
+			}
+		}
 		
 		
 	}
 	
 	
 }
-
-class QueueTest<T>{
+//
+class QueueTest{
 	
 	Node firstNode;
 	Node lastNode;
 	
 	class Node{
 		Node next;
-		T data;
-		public Node(T data) {
+		int data;
+		public Node(int data) {
 			this.data = data;
 		}
 	}
 	
 	
 	// Methods
-	public void push(T obj) {
+	public void push(int obj) {
 		// 노드가 하나도 없는 경우
 		if(firstNode == null) {
 			Node node = new Node(obj);
@@ -84,7 +94,7 @@ class QueueTest<T>{
 			lastNode = node;
 		}
 	}
-	public Object pop() {
+	public int pop() {
 		// 큐에 수가 없는 경우
 		if(firstNode == null) return -1;
 		// 큐에 수가 있는 경우
@@ -110,13 +120,12 @@ class QueueTest<T>{
 		if(size() == 0 ) return 1;
 		return 0;
 	}
-	public Object front() {
+	public int front() {
 		if(firstNode == null) return -1;
 		return firstNode.data;
 	}
-	public Object back() {
+	public int back() {
 		if(lastNode == null) return -1;
 		return lastNode.data;
 	}
-	
 }
