@@ -1,4 +1,4 @@
-package dataStructure;
+package dataStructure.boj;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -30,40 +30,35 @@ public class Queue2 {
 public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
+		Integer n = sc.nextInt();
 		sc.nextLine();
 		String[] order = new String[n];
 		for(int i = 0; i < n; i++ ) {
 			order[i] = sc.nextLine();
 		}
-		
+		sc.close();
 		// Queue Instance
 		Queue<Integer> queue = new LinkedList<Integer>();
-		int lastNum = -1;
+		Integer lastNum = -1;
 		
 		
 		for(String str : order) {
-			switch(str.split(" ")[0]) {
-				case "push":
-					queue.add(Integer.parseInt(str.split(" ")[1]));
-					lastNum = Integer.parseInt(str.split(" ")[1]);
-					break;
-				case "pop":
-					System.out.println(queue.poll()==null? -1:queue.poll());
-					break;
-				case "size":
-					System.out.println(queue.size());
-					break;
-				case "empty":
-					System.out.println(queue.isEmpty() == true ? 1:0);
-					break;
-				case "front":
-					System.out.println(queue.peek() == null ? -1:queue.peek());
-					break;
-				case "back":
-					System.out.println(lastNum);
-					break;
+			String str2 = str.split(" ")[0];
+			if( str2.equalsIgnoreCase("push")) {
+				queue.add(Integer.parseInt(str.split(" ")[1]));
+				lastNum = Integer.parseInt(str.split(" ")[1]);
+			}else if( str2.equalsIgnoreCase("pop")) {
+				System.out.println(queue.peek() == null? -1: queue.poll());
+			}else if( str2.equalsIgnoreCase("size")) {
+				System.out.println(queue.size());
+			}else if( str2.equalsIgnoreCase("empty")) {
+				System.out.println(queue.isEmpty() == true ? 1:0);
+			}else if( str2.equalsIgnoreCase("front")) {
+				System.out.println(queue.peek() == null ? -1:queue.peek());
+			}else if( str2.equalsIgnoreCase("back")) {
+				System.out.println(lastNum);
 			}
+			
 		}
 		
 		

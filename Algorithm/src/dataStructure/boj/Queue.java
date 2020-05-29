@@ -1,4 +1,4 @@
-package dataStructure;
+package dataStructure.boj;
 
 import java.util.Scanner;
 
