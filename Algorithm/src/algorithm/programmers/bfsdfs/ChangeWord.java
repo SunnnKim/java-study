@@ -58,7 +58,7 @@ class SolutionBFS {
 
     static class Node {
         String next;
-        int edge;
+        int edge;	
 
         public Node(String next, int edge) {
             this.next = next;
