@@ -5,51 +5,29 @@ public class Test2 {
 	public static void main(String[] args) {
 
 		Solution2 s = new Solution2();
-
 		s.calculate(9, 2, 3, 1);
-
 	}
-
 }
 
 class Solution2{
-
 	int count = 0;
-
 	int sum = 0;
-
 	public boolean dividable(int number, int divide) {
-
 		if(number % divide == 0) return true; 
-
 		return false;
-
 	}
 
 	
-
 	public int calculate(int n, int k, int a, int b) {
-
-		
-
 		while( n != 1 ) {
-
 			if(dividable(n,k)) {
-
 				sum += a;
-
 				n = divide(n, k);
-
 			}
-
 			sum += b;
-
 			n = substract(n);
-
 			System.out.println(n);
-
 			System.out.println(sum);
-
 		}
 
 		return count;
