@@ -1,5 +1,9 @@
 package algorithm.boj;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
 
 /*
  문제
@@ -32,4 +36,100 @@ package algorithm.boj;
  */
 public class Q1926 {
 
+	public static void main(String args[]){
+		
+		Scanner sc = new Scanner(System.in);
+		String str = sc.nextLine();
+		int a = Integer.parseInt(str.split(" ")[0]);
+		int b = Integer.parseInt(str.split(" ")[1]);
+		int[][] map = new int[a][b];
+		for(int i=0; i<a; i++) {
+			String num = sc.nextLine();
+			for(int j = 0; j < b; j++) {
+				map[i][j] = Integer.parseInt(num.split(" ")[j]);
+			}
+		}
+		sc.close();
+		Solution s = new Solution(map, a, b);
+		int countPath = 0;
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		for (int i = 0; i < map.length; i++) {
+			for (int j = 0; j < map[0].length; j++) {
+				int num = s.bfs(i, j);
+				if(map[i][j] != 0 && num != 0) {
+					countPath++;
+					arr.add(num);
+				}
+				s.count = 0;
+			}
+		}
+		int max = arr.get(0);
+		for(int n : arr) {
+			if(max < n){
+				max = n;
+			}
+		}
+		System.out.println(countPath);
+		System.out.println(max);
+	}
+
+
+}
+class Solution{
+	boolean visited[][];
+	int map[][];
+	int count = 0;	// 갯수 카운트
+	int breadth = 0; // 넓이의 합 
+	Queue<Pointer> queue;
+	
+	public Solution() {
+	}
+	// 생성자 
+	public Solution( int [][] map, int a, int b) {
+		this.map = map;
+		visited = new boolean[a][b];
+		queue = new LinkedList<Pointer>();
+	}
+	
+	// 현재 위치를 반환 
+	class Pointer{
+		int dx;
+		int dy;
+		public Pointer(int dx, int dy) {
+			this.dx = dx;
+			this.dy = dy;
+		}
+	}
+	
+	public int bfs(int a, int b) {
+		if(!visited[a][b]) { 
+			visited[a][b] = true;
+
+			if(map[a][b] == 1) count++;
+			else return 0;
+			
+			
+			if( b+1 < map[0].length ) {
+				if( !visited[a][b+1] && map[a][b+1] == 1 ) {
+//					System.out.println("b+1 : " + (a) + " , " + (b+1));
+					queue.add(new Pointer(a, b+1));
+				}
+			}
+			if( a+1 < map.length  ) {
+				if( !visited[a+1][b] && map[a+1][b] == 1) {
+//					System.out.println("a+1 : " + (a+1) + " , " + (b));
+					queue.add(new Pointer(a+1, b));
+				}
+			}
+			while( !queue.isEmpty() ) {
+				Pointer p2 = queue.poll();
+//				System.out.println("p2 : " + p2.dx + " , " + p2.dy);
+				bfs(p2.dx, p2.dy);
+			}
+		}
+		return count;
+		
+	}
+	
+	
 }
