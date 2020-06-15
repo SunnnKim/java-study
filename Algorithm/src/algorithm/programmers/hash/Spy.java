@@ -16,23 +16,16 @@ public class Spy {
 }
 class Clothes{
 	
-	Map<String, Integer> map;
+	Map<String, String> map;
 	
 	public Clothes(String[][] str) {
-		map = new HashMap<String, Integer>();
-		for(int i = 0; i < str.length; i++ ) {
-			if( map.containsKey(str[i][1])) {
-				map.put(str[i][1], map.get(str[i][1])+1);
-			}else {
-				map.put(str[i][1], 2);
-			}
+		map = new HashMap<String, String>();
+		for (int i = 0; i < str.length; i++) {
+			map.put(str[i][0], str[i][1]);
 		}
 	}
-	public int solution() {
-		Iterator<String> it = map.keySet().iterator();
-		while(it.hasNext()) {
-			
-		}
-		return 0;
-	}
+	
+	
+	
+	
 }
