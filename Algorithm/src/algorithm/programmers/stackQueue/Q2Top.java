@@ -1,4 +1,8 @@
 package algorithm.programmers.stackQueue;
+
+import java.util.Arrays;
+import java.util.Stack;
+
 /*
  문제 설명
 수평 직선에 탑 N대를 세웠습니다. 
@@ -14,11 +18,11 @@ package algorithm.programmers.stackQueue;
 높이가 9인 두 번째 탑과 높이가 6인 첫 번째 탑이 보낸 레이저 신호는 어떤 탑에서도 수신할 수 없습니다.
 
 송신 탑(높이)	수신 탑(높이)
-5(4)	4(7)
-4(7)	2(9)
-3(5)	2(9)
-2(9)	-
-1(6)	-
+5(4)			4(7)
+4(7)			2(9)
+3(5)			2(9)
+2(9)			 -
+1(6)			 -
 맨 왼쪽부터 순서대로 탑의 높이를 담은 배열 heights가 매개변수로 주어질 때 
 각 탑이 쏜 신호를 어느 탑에서 받았는지 기록한 배열을 return 하도록 solution 함수를 작성해주세요.
 
@@ -26,11 +30,14 @@ package algorithm.programmers.stackQueue;
 heights는 길이 2 이상 100 이하인 정수 배열입니다.
 모든 탑의 높이는 1 이상 100 이하입니다.
 신호를 수신하는 탑이 없으면 0으로 표시합니다.
+
 입출력 예
-heights	return
-[6,9,5,7,4]	[0,0,2,2,4]
-[3,9,9,3,5,7,2]	[0,0,0,3,3,3,6]
-[1,5,3,6,7,6,5]	[0,0,2,0,0,5,6]
+
+	heights				return	
+[6,9,5,7,4]			[0,0,2,2,4]
+[3,9,9,3,5,7,2]		[0,0,0,3,3,3,6]
+[1,5,3,6,7,6,5]		[0,0,2,0,0,5,6]
+
 입출력 예 설명
 입출력 예 #1
 앞서 설명한 예와 같습니다.
@@ -51,12 +58,52 @@ heights	return
 public class Q2Top {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int heights[] = {6,9,5,7,4};
+		Tower t = new Tower(heights);
+		int answer[] = t.solution(heights);
+		
+		System.out.println(Arrays.toString(t.send(heights)));
 	}
 
 }
 
 class Tower{
-	
+		Stack<Integer> tower = new Stack<Integer>();
+		Stack<Integer> result = new Stack<Integer>();
+		
+	    public int[] solution(int[] heights) {
+	        int[] answer = {};
+	        return answer;
+	    }
+	    
+	    public Tower(int[] heights) {
+	    	for(int n : heights) {
+	    		tower.add(n);
+	    	}
+	    }
+	    
+	    public int[] send(int[] heights) {
+	    	int[] array = new int[heights.length];
+	    	
+	    	while( !tower.isEmpty() ) {
+	    		int num = tower.pop();
+	    		int r = 0;
+	    		int loop = 0;
+	    		for(int i = tower.size() - 1; i >= 0; i--) {
+	    			if( tower.get(i) > num) {
+	    				r = (tower.size() - loop);
+	    				break;
+	    			}
+	    			loop++;
+	    		}
+	    		result.add(r);
+	    	}
+	    	
+	    	for(int i = 0; i < array.length; i++) {
+	    		array[i] = result.pop();
+	    	}
+	    	
+	    	return array;
+	    }
+	    
 }
