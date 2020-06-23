@@ -58,6 +58,7 @@ public class Test2 {
 	                    if (arr[nextX][nextY] == 1) {
 	                        continue;
 	                    }
+	                    System.out.println("here is arr[nextX][nextY] = " +  arr[nextX][nextY] + ", arr[node.x][node.y] = " +  arr[node.x][node.y]);
 	                    arr[nextX][nextY] = arr[node.x][node.y];
 	                    stack.push(new Node(nextX, nextY, dir));
 	                    dir[0] = dx[i];
