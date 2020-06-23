@@ -10,15 +10,14 @@ public class Test1 {
 				{0,0,0,0,0,0,0,0},
 				{0,0,0,0,0,0,0,0},
 				{0,0,0,1,1,0,0,0},
-				{0,0,0,1,0,1,0,0},
+				{0,0,0,1,0,0,0,0},
 				{0,0,1,1,2,0,0,0},
 				{0,0,2,2,2,0,0,0},
-				{0,0,2,0,2,1,0,0},
+				{0,0,0,0,2,1,0,0},
 				{0,0,0,0,0,0,0,0}
 		};
 		Othello o = new Othello();
 		o.getSolution(game, 8, 8);
-		System.out.println();
 		
 	}
 }
@@ -55,7 +54,7 @@ class Othello{
 		
 		return 0;
 	}
-	// 백돌을 검사하는 함수
+	// 돌을 검사하는 함수
 	public void getSolution(int [][] arr, int N, int M) {
 		
 		// stack에 모두 담기
@@ -63,7 +62,6 @@ class Othello{
 			for (int j = 0; j < arr[0].length; j++) {
 				if(arr[i][j] == 1) {
 					stack.push(new Node(i, j));
-//					System.out.println("arr["+i+"]["+j+"]");
 				}
 			}
 		}
@@ -75,15 +73,13 @@ class Othello{
 			Node node = stack.pop();
 			// 방향성이 있는 경우 
 			if(node.dir[0] != -3 || node.dir[1] != -3 ) {
-				count++;
+				count++;	// 카운트 업 
 				// 방향성 확인
 				int nextX = node.dx + node.dir[0];
 				int nextY = node.dy + node.dir[1];
-//				System.out.println("nextX=" + nextX + ", nextY= "+nextY+" arr[nextX][nextY] = " +arr[nextX][nextY]);
 				
 				if( arr[nextX][nextY] == 2) {
 					stack.push(new Node(nextX, nextY, node.dir));
-//					System.out.println("arr["+nextX+"]["+nextY+"]");
 				}
 				else if( arr[nextX][nextY] == 1) {
 					count = 0;
@@ -91,10 +87,8 @@ class Othello{
 				}
 				else {
 					maxCount = count > maxCount ? count : maxCount;
-//					System.out.println("count = " + count);
 					count = 0;
 				}
-				
 			}
 			// 아직 방향성이 없는 경우 
 			else {	
@@ -108,7 +102,7 @@ class Othello{
 					if(nextX < 0 || nextY < 0 || nextX > N || nextY > M  ) {
 						continue;
 					}
-					// 1인 경우 스킵 
+					// 2가 아닌 경우 스킵 
 					if(arr[nextX][nextY] != 2 ) {
 						continue;
 					}
@@ -116,22 +110,11 @@ class Othello{
 					dir[0] = dx[i];
                     dir[1] = dy[i];
 					stack.push(new Node(nextX, nextY, dir));
-//					System.out.println("start = " + node.dx + "/" + node.dy+ ", nextX= " + nextX + ", nextY = " + nextY +", count = " + count);
-					
-					
 				}
 			}
-			
-			
 		}
-		
 		System.out.println(maxCount);
-	
-	
-	
 	}
-	
-	
 }
 /*
  
