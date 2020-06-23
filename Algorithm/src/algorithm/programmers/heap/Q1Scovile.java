@@ -1,10 +1,14 @@
 package algorithm.programmers.heap;
 
+import java.util.Arrays;
+
 public class Q1Scovile {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Scoville s = new Scoville();
+		int[] arr = { 4, 5, 3, 1, 2, 9, 6};
+		s.solution(arr);
 	}
 
 }
@@ -17,30 +21,42 @@ Leo가 가진 음식의 스코빌 지수를 담은 배열 scoville과 원하는 
  */
 
 class Scoville{
-
-	// 4 5 3 1 2 9 8 = 7
-	//       4
-	//    5      3
-	//  1   2  9   8 
 	
-	public void heapSort(int[] arr ) {
-		int number = arr.length;
-		int root = 0;
-		for(int i = 1; i < number; i++) {
-			int c = root / 2;
-			do {
-				
-				
-				
-			}while( c != 0);
-			
-			
-			
+	public int getScovile(int[] arr, int k) {
+		int count = -1;
+		int result = 0;
+		for (int i = 0; i < arr.length - 1; i++) {
+			count++;
+			result = arr[i] + (2 * arr[i+1]);
+			System.out.println(result);
 		}
-		
+		if(result >= k) return count;
+		else return -1;
+	}
+
+	public int[] getHeapArray(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			int left = i * 2 + 1;
+			int right = left + 1 < arr.length ? left + 1: 0;
+			if(left >= arr.length ) continue;
+			arr = sort(arr, left, right );
+		}
+		for (int i = arr.length - 1; i > 1; i--) {
+			arr = sort(arr, 1, 2);
+			arr = swap(arr, 0, i);
+		}
+		return arr;
 		
 	}
 	
+	public int[] sort(int[] arr, int left, int right ) {
+		
+		int parent = (left - 1) / 2;
+		int child = arr[left] > arr[right] ? left:right;
+		if(arr[parent] < arr[child]) arr = swap(arr, parent, child);
+		
+		return arr;
+	}	
 	
 	public int[] swap(int[] arr, int i, int j) {
 		int temp = arr[i];
@@ -49,5 +65,4 @@ class Scoville{
 		return arr;
 	}
 	
-	
-}
+ }
