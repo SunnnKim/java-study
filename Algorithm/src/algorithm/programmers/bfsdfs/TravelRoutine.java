@@ -48,7 +48,7 @@ public class TravelRoutine {
 		
 		SolutionRoutine s = new SolutionRoutine();
 		String[][] ticket = {{"ICN", "SFO"}, {"ICN", "ATL"}, {"SFO", "ATL"},{"ATL", "ICN"},{"ATL", "SFO"}};
-		s.search(ticket,ticket[0][0],0);
+		//s.search(ticket,ticket[0][0],0);
 	}
 	
 	
@@ -65,32 +65,6 @@ class SolutionRoutine{
 ]
 	 */
 	
-	List<String> arrayList = new ArrayList<String>();
-	
-	// 재귀로 돌릴거
-	public void search(String[][] tickets, String departure, int count) {
-		
-		if(count == tickets.length) {
-			return;
-		}
-		if(count == 0)	arrayList.add(departure);
-		for(int i = 0; i < tickets.length; i ++ ) {
-			if(departure.equals(tickets[i][0])) {
-				System.out.println("departure : " + departure);
-				if(arrayList.get(arrayList.indexOf(tickets[i][0])) == tickets[i][1]) {
-				}
-				
-				
-				
-				
-				arrayList.add(tickets[i][1]);
-				search(tickets, tickets[i][1], count+1);
-			}
-		}
-		
-		System.out.println(arrayList);
-		
-	}
 	
 	
 	

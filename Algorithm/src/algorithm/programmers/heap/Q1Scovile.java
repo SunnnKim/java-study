@@ -8,7 +8,6 @@ public class Q1Scovile {
 		// TODO Auto-generated method stub
 		Scoville s = new Scoville();
 		int[] arr = { 4, 5, 3, 1, 2, 9, 6};
-		s.solution(arr);
 	}
 
 }

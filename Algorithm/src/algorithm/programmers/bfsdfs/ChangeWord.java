@@ -41,8 +41,10 @@ public class ChangeWord {
 		 String[] words = { "hot", "dot", "dog", "lot", "log", "cog" };
 		 String begin = "hit";
 		 String target = "cog";
-		 SolutionBFS s = new SolutionBFS();
-		 System.out.println(s.solution(begin, target, words));
+		 SolutionBFS s = new SolutionBFS(words, begin, target);
+		 int answer = s.solution();
+		 System.out.println(answer);
+		 // System.out.println(s.solution(begin, target, words));
 		 
 	 }
 	 
@@ -52,60 +54,71 @@ public class ChangeWord {
 // 큐로풀기??
 
 
+
 // 답 
 
 class SolutionBFS {
-
-    static class Node {
-        String next;
-        int edge;	
-
-        public Node(String next, int edge) {
-            this.next = next;
-            this.edge = edge;
-        }
-    }
-
-    public int solution(String begin, String target, String[] words) {
-        int n = words.length, ans = 0;
-
-        // for (int i=0; i<n; i++)
-        //  if (words[i] != target && i == n-1) return 0;
-
-        Queue<Node> q = new LinkedList<>();
-
-
-        boolean[] visit = new boolean[n];
-        q.add(new Node(begin, 0));
-
-        while(!q.isEmpty()) {
-            Node cur = q.poll();
-            if (cur.next.equals(target)) {
-                ans = cur.edge;
-                break;
-            }
-
-            for (int i=0; i<n; i++) {
-                if (!visit[i] && isNext(cur.next, words[i])) {
-                    visit[i] = true;
-                    q.add(new Node(words[i], cur.edge + 1));
-                }
-            }
-        }
-
-        return ans;
-    }
-
-    static boolean isNext(String cur, String n) {
-        int cnt = 0;
-        for (int i=0; i<n.length(); i++) {
-            if (cur.charAt(i) != n.charAt(i)) {
-                if (++ cnt > 1) return false;
-            }
-        }
-
-        return true;
-    }    
+	String[] word;
+	String begin;
+	String target;
+	int count;
+	int matchingCount;
+	
+	public SolutionBFS(String[] word, String begin, String target) {
+		count = 0;
+		matchingCount = 0;
+		this.word = word;
+		this.begin = begin;
+		this.target = target;
+		
+	}
+	public int solution() {
+		
+		for (int i = 0; i < word.length; i++) {
+			begin = getWord(i);
+		}
+		// 마지막은 따로 
+		if(!begin.equals(target)) {
+			count = -1;
+		}
+		return count;
+		
+	}
+	
+	public String getWord(int n) {
+		String result = begin;
+		int numCount = 0;
+		int targetCount = 0;
+		
+		if(matchingCount == target.length()-1 ) {
+			if(word[n].equals(target)) {
+				count++;
+				result = word[n];
+			}
+		}
+		else {
+			// 타겟과 시작점이랑 글자수 매칭되는 개수 
+			for (int i = 0; i < target.length(); i++) {
+				char c = target.charAt(i);
+				char t = begin.charAt(i);
+				if(c == t) targetCount++; 
+			}
+			if(matchingCount < targetCount) matchingCount = targetCount;
+			
+			// 시작단어랑 다음 단어랑 매칭되지 않는 개수 
+			for (int i = 0; i < 3; i++) {
+				char c = word[n].charAt(i);
+				char t = begin.charAt(i);
+				if(c != t) numCount++; 
+			}
+			
+			if( numCount >= matchingCount && numCount == 1) {
+				result = word[n];
+				this.count++;
+			}
+		}
+			return result;
+		}
 }
 
 
