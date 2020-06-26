@@ -110,6 +110,7 @@ class Apartment{
 			}
 		}
 		System.out.println(answer.size());
+		answer.sort(null);
 		for(int n : answer) {
 			System.out.println(n);
 		}
@@ -130,14 +131,12 @@ class Apartment{
 					if( nextX >= length || nextX < 0 || nextY >= length || nextY < 0) {
 						continue;
 					}
-					if(arr[nextX][nextY] == 0 ) {
+					if(arr[nextX][nextY] == 0 || visited[nextX][nextY] ) {
 						continue;
 					}
-					if(!visited[nextX][nextY]) {
-						// 통과
-						count++;
-						count = BFS(nextX, nextY, count);
-					}
+					// 통과
+					count++;
+					count = BFS(nextX, nextY, count);
 				}
 			}
 		}
