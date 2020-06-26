@@ -1,7 +1,9 @@
 package algorithm.boj;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 /*
  문제
@@ -47,43 +49,53 @@ sr이 s1을 선택하는 경우에만 한 팀이 될 수 있다.
 public class Q9466 {
 	static boolean visited[];
 	static boolean finished[];
+	static int[] arr;
+	static int count = 0;
 	
 	public static void main(String[] args) throws Exception{
 		BufferedReader br = new  BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		String result = "";
 		int T = Integer.parseInt(br.readLine());
-		int count = 0;
 		for (int i = 0; i < T; i++) {
 			int N = Integer.parseInt(br.readLine());
-			int[] arr = new int[N];
-			visited = new boolean[N];
-			finished = new boolean[N];
+			arr = new int[N+1];
+			visited = new boolean[N+1];
+			finished = new boolean[N+1];
 			String[] str = br.readLine().split(" ");
-			for (int j = 0; j < str.length; j++) {
+			for (int j = 1; j < str.length; j++) {
 				arr[j] = Integer.parseInt(str[j]);
 				visited[j] = false;
 			}
-			count = getSolution(arr, i, count);
+			for (int j = 1; j < str.length; j++) {
+				DFS(j);
+				result += count;
+				System.out.println(result);
+				count = 0;
+			}
 		}
-		
+		System.out.println(result);
 		
 	}
 	
-	public static int getSolution(int[] arr, int n, int count) {
-		if(!visited[n]) {
-			visited[n] = true;
-			int m = arr[n];
-			
-			if( m < arr.length ) {
-				count = getSolution(arr, m, count);
-			}
-			
-			if( m == (n + 1) ) {
-				return ++count;
+	public static void DFS(int now) {
+		if(visited[now]) return;	// 방문한 노드인 경우 리턴 
+	
+		// 방문하지 않은 노드 
+		visited[now] = true;
+		int next = arr[now];
+		
+		if( !visited[next] ) {	// 다음 노드가 방문하지 않은 경우 
+			DFS(next);
+		}else {	// 방문한 경우 = 사이클이 끝났을 때
+			if( !finished[now] ) {	// 완료표시가 안된경우  
+				count++;
+				for (int i = next; i != now; i = arr[next]) {
+					count++;
+				}
 			}
 		}
-		
-		
-		return count;
-	
+		 // 모든 작업이 끝나서 더이상 사용하지 않음
+        finished[now] = true;
 	}
 }
